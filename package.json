@@ -1,0 +1,23 @@
+{
+  "name": "nodejs11instaapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "formidable": "^1.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^2.2.36",
+    "nodemailer": "^6.7.5",
+    "sharp": "^0.30.4",
+    "tracer": "^1.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": ""
+}

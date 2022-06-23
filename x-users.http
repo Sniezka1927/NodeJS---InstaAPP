@@ -1,0 +1,64 @@
+#a) POST /api/user/register // register usera z potwierdzeniem wysłanym na maila
+#b) GET /api/user/confirm/<token> // user potwierdza rejestrację z użyciem tokena plus mail że konto aktywne
+#c) POST /api/user/login // logowanie z odesłaniem tokena po zalogowaniu - od tej pory każde żądanie zawiera token
+#d) GET /api/user // json all users - funkcja pomocnicza dla testów
+
+
+### POST - dodaj konto
+POST  http://localhost:3000/api/users/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "name",
+    "lastName": "lastName",
+    "login": "sniezka",
+    "password": "password",
+    "email": "olekdyz1@yahoo.com"
+}
+
+
+### odczyt
+#POST http://localhost:3000/api/users/login HTTP/1.1
+#authorization: Bearer eyJhbG.eyJlbWFpbCII6MTY1MjI4NjgzN30.xkXNNho-MxECZsJXCIU
+
+### login
+POST http://localhost:3000/api/users/login HTTP/1.1
+content-type: application/json
+
+{
+  "email":"olekdyz1@yahoo.com",
+  "password":"password"
+}
+
+
+### verify
+GET http://localhost:3000/api/users/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9sZWtkeXoxQHlhaG9vLmNvbSIsImlhdCI6MTY1MzM4NzYyNCwiZXhwIjoxNjUzNDc0MDI0fQ.Uve7PYIbd-FDJ1IRkbM6FsnPB27qcMJ74Z_S2TJ6Vcg HTTP/1.1
+
+
+### Aktualizacja dnaych
+PATCH http://localhost:3000/api/users HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9sZWtkeXoxQHlhaG9vLmNvbSIsImlhdCI6MTY1MzM4Nzg5OCwiZXhwIjoxNjUzNDc0Mjk4fQ.5SkQlFx_UuoZa78jGMcSKtPPh2m_Avfugzw22HC49hw
+
+{
+"name":"moj nowy name",
+"lastName": "qqqq",
+"email": "emaill@email.email"
+}
+
+### Aktualizacja zdjecia
+POST http://localhost:3000/api/users/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9sZWtkeXoxQHlhaG9vLmNvbSIsImlhdCI6MTY1MzM4ODg4NCwiZXhwIjoxNjUzNDc1Mjg0fQ.5-q0hnV_B3AjkOty5dZDP5egYUT1g7mOf9tvWPqWdPE
+Content-Type: multipart/form-data; boundary=----FormBoundary1234
+
+------FormBoundary1234
+Content-Disposition: form-data; name="file"; filename="switch.jpg"
+Content-Type: image/jpeg
+
+< ./switch.jpg
+
+------FormBoundary1234
+Content-Disposition: form-data; name="album"
+Content-Type: text/plain
+
+qweqweqwe
+------FormBoundary1234
